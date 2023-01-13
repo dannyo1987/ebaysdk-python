@@ -172,7 +172,7 @@ class Connection(BaseConnection):
         time_difference_last_token = time_now - self.time_of_last_token
         # print('Time difference last token', time_difference_last_token)
         if time_difference_last_token.total_seconds() > 3600:
-            url = 'https://' + self.config.get('domain') + '/identity/v1/oauth2/token'
+            url = 'https://' + self.config.get('domain').replace('open.','') + '/identity/v1/oauth2/token'
             temp_headers = CaseInsensitiveDict()
             temp_headers['Content-Type'] = 'application/x-www-form-urlencoded'
             temp_headers['Authorization'] = f'Basic {self.final_token}'
